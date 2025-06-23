@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taktyl Labs - Solutions Digitales pour l'Afrique</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Header -->
+      <header>
+        <div class="container header-container">
+          <router-link to="/" class="logo">
+            <i class="fas fa-laptop-code logo-icon"></i>
+            <h1>Taktyl Labs</h1>
+          </router-link>
+          <button class="mobile-menu-btn" @click="toggleMenu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <nav>
+            <ul :class="{ show: menuOpen }">
+              <li>
+                <router-link to="/" exact-active-class="active"
+                  >Notre Univers</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/solutions" active-class="active"
+                  >Nos solutions</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/adn" active-class="active"
+                  >Notre ADN</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/projet" active-class="active"
+                  >Un projet ?</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/inspiration" active-class="active"
+                  >Inspiration & Impact</router-link
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Router View -->
+      <div class="page">
+        <router-view></router-view>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+        <div class="container">
+          <div class="footer-container">
+            <div class="footer-column">
+              <h3>Taktyl Labs</h3>
+              <p>
+                Solutions digitales robustes et adaptées aux réalités africaines
+                pour les PME, écoles, associations et entrepreneurs.
+              </p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <div class="footer-column">
+              <h3>Liens rapides</h3>
+              <ul class="footer-links">
+                <li><router-link to="/">Notre Univers</router-link></li>
+                <li>
+                  <router-link to="/solutions">Nos solutions</router-link>
+                </li>
+                <li><router-link to="/adn">Notre ADN</router-link></li>
+                <li><router-link to="/projet">Un projet ?</router-link></li>
+                <li>
+                  <router-link to="/inspiration"
+                    >Inspiration & Impact</router-link
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h3>Nos solutions</h3>
+              <ul class="footer-links">
+                <li><a href="#">Applications métiers</a></li>
+                <li><a href="#">Solutions éducatives</a></li>
+                <li><a href="#">Outils pour l'entrepreneuriat</a></li>
+                <li><a href="#">Programme Yessal Tech</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h3>Contact</h3>
+              <ul class="footer-links">
+                <li><i class="fas fa-envelope"></i> hello@taktylabs.com</li>
+                <li><i class="fas fa-phone"></i> +221 XXX XXX XXX</li>
+                <li><i class="fas fa-map-marker-alt"></i> Dakar, Sénégal</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="copyright">
+            &copy; 2023 Taktyl Labs. Tous droits réservés.
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Backend simulé pour le blog
+      class BlogBackend {
+        constructor() {
+          // Initialisation des articles avec des données par défaut
+          this.articles = JSON.parse(
+            localStorage.getItem("taktyl_articles")
+          ) || [
+            {
+              id: 1,
+              title: "Retours d'expériences avec nos clients",
+              content:
+                "Découvrez comment nos solutions ont transformé les opérations de nos clients à travers des études de cas concrètes et des témoignages inspirants.",
+              category: "Histoires de terrain",
+              date: "15 juin 2023",
+              image:
+                "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+            },
+            {
+              id: 2,
+              title: "Tech, éducation et entrepreneuriat en Afrique",
+              content:
+                "Nos analyses et perspectives sur les tendances technologiques et leur impact sur le développement économique et éducatif en Afrique.",
+              category: "Réflexions",
+              date: "2 juin 2023",
+              image:
+                "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+            },
+            {
+              id: 3,
+              title: "Guide pratique pour l'entrepreneuriat numérique",
+              content:
+                "Accédez à notre nouveau guide complet pour lancer votre entreprise numérique en Afrique, avec des conseils pratiques et des ressources.",
+              category: "Ressources pratiques",
+              date: "25 mai 2023",
+              image:
+                "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80",
+            },
+          ];
+        }
+
+        // Récupérer tous les articles
+        getArticles() {
+          return this.articles;
+        }
+
+        // Ajouter un nouvel article
+        addArticle(article) {
+          const newArticle = {
+            id: Date.now(),
+            date: new Date().toLocaleDateString("fr-FR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            }),
+            ...article,
+          };
+          this.articles.unshift(newArticle);
+          this.saveToLocalStorage();
+          return newArticle;
+        }
+
+        // Mettre à jour un article
+        updateArticle(id, updatedArticle) {
+          const index = this.articles.findIndex((article) => article.id === id);
+          if (index !== -1) {
+            this.articles[index] = {
+              ...this.articles[index],
+              ...updatedArticle,
+            };
+            this.saveToLocalStorage();
+            return this.articles[index];
+          }
+          return null;
+        }
+
+        // Supprimer un article
+        deleteArticle(id) {
+          const index = this.articles.findIndex((article) => article.id === id);
+          if (index !== -1) {
+            this.articles.splice(index, 1);
+            this.saveToLocalStorage();
+            return true;
+          }
+          return false;
+        }
+
+        // Sauvegarder dans le localStorage
+        saveToLocalStorage() {
+          localStorage.setItem(
+            "taktyl_articles",
+            JSON.stringify(this.articles)
+          );
+        }
+      }
+
+      // Initialisation du backend
+      const blogBackend = new BlogBackend();
+
+      // Composant pour la page d'accueil (Notre Univers)
+      const Accueil = {
+        template: `
+        <div>
+          <!-- Home Section -->
+          <section class="hero">
+            <div class="container">
+              <div class="hero-content">
+                <h2>Bienvenue dans notre univers digital</h2>
+                <p>Chez Taktyl Labs, nous pensons que la technologie peut — et doit — être au service de la transformation locale. Nous créons des solutions digitales robustes, accessibles et adaptées aux réalités africaines. PME, écoles, associations, entrepreneurs : notre mission est d'outiller chaque acteur pour lui permettre de faire plus, mieux, plus vite.</p>
+                <router-link to="/solutions" class="btn">Découvrir nos solutions</router-link>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- Pillars Section -->
+          <section class="pillars">
+            <div class="container">
+              <h2 class="section-title">Notre offre repose sur trois piliers</h2>
+              <div class="pillars-container">
+                <div class="pillar">
+                  <i class="fas fa-chart-line pillar-icon"></i>
+                  <h3>Applications métiers intelligentes</h3>
+                  <p>Gestion commerciale, gestion scolaire, facturation, RH, paie… Nous développons des solutions complètes et adaptées pour optimiser vos processus métiers.</p>
+                </div>
+                <div class="pillar">
+                  <i class="fas fa-lightbulb pillar-icon"></i>
+                  <h3>Outils d'accompagnement à l'entrepreneuriat</h3>
+                  <p>Analyse de marché, business model, planification stratégique… Nos outils vous aident à transformer vos idées en entreprises viables.</p>
+                </div>
+                <div class="pillar">
+                  <i class="fas fa-graduation-cap pillar-icon"></i>
+                  <h3>Formation et diffusion du savoir</h3>
+                  <p>LMS, cours pratiques, suivi des apprenants… Nos solutions éducatives facilitent l'acquisition et le partage des connaissances.</p>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 3rem;">
+                <router-link to="/projet" class="btn">Contactez-nous</router-link>
+              </div>
+            </div>
+          </section>
+        </div>
+      `,
+      };
+
+      // Composant pour la page Solutions
+      const Solutions = {
+        template: `
+        <div>
+          <!-- Solutions Section -->
+          <section class="solutions">
+            <div class="container">
+              <h2 class="section-title">Vos défis, nos réponses digitales</h2>
+              <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Nous développons des solutions métiers adaptées, évolutives et pensées pour l'usage terrain. Voici un aperçu de notre écosystème :</p>
+              
+              <div class="solution-cards">
+                <div class="solution-card">
+                  <div class="solution-visual" style="background-color: #2c5282; background-image: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);"></div>
+                  <div class="solution-content">
+                    <h3><i class="fas fa-file-invoice solution-icon"></i> Applications métiers</h3>
+                    <ul class="solution-list">
+                      <li>Gestion commerciale et facturation</li>
+                      <li>Gestion locative immobilière</li>
+                      <li>Gestion de la paie et des RH</li>
+                      <li>ERP sur mesure pour petites structures</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="solution-card">
+                  <div class="solution-visual" style="background-color: #2b6cb0; background-image: linear-gradient(135deg, #2b6cb0 0%, #1a365d 100%);"></div>
+                  <div class="solution-content">
+                    <h3><i class="fas fa-graduation-cap solution-icon"></i> Solutions éducatives</h3>
+                    <ul class="solution-list">
+                      <li>Eduxel : gestion scolaire tout-en-un</li>
+                      <li>PracticLMS : plateforme LMS orientée apprentissage pratique</li>
+                      <li>LMS Classik : plateforme de cours et d'évaluations</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="solution-card">
+                  <div class="solution-visual" style="background-color: #3182ce; background-image: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);"></div>
+                  <div class="solution-content">
+                    <h3><i class="fas fa-rocket solution-icon"></i> Outils pour l'entrepreneuriat</h3>
+                    <ul class="solution-list">
+                      <li>Kaanva : assistant d'analyse de marché et business plan</li>
+                      <li>Outils de coaching et de mentorat digitalisé</li>
+                      <li>Plateforme de planification stratégique</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      `,
+      };
+
+      // Composant pour la page Notre ADN
+      const ADN = {
+        template: `
+        <div>
+          <!-- DNA Section -->
+          <section class="dna">
+            <div class="container">
+              <h2 class="section-title">L'ADN Taktyl Labs</h2>
+              <div class="dna-content">
+                <div class="dna-text">
+                  <p>Nous sommes un studio de conception basé au Sénégal, né d'un constat simple : trop de PME et d'acteurs éducatifs restent à l'écart de la révolution numérique faute d'outils adaptés. Nous voulons changer cela.</p>
+                  
+                  <div class="dna-values">
+                    <div class="value-card">
+                      <h4>Notre vision</h4>
+                      <p>Créer un pont entre innovation technologique et utilité concrète.</p>
+                    </div>
+                    <div class="value-card">
+                      <h4>Notre engagement</h4>
+                      <p>Construire des outils performants, beaux, simples, et profondément utiles.</p>
+                    </div>
+                    <div class="value-card">
+                      <h4>Notre méthode</h4>
+                      <p>L'écoute terrain avant tout, le design centré utilisateur, expertise renforcée par l'IA et le no-code, une production locale pour un impact global.</p>
+                    </div>
+                  </div>
+                  
+                  <p style="margin-top: 2rem; font-weight: 500;">Taktyl Labs, c'est l'alliance du sur-mesure, de l'intelligence collaborative et d'une ambition claire : digitaliser intelligemment l'Afrique.</p>
+                </div>
+                <div class="dna-visual"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      `,
+      };
+
+      // Composant pour la page Un projet ?
+      const Projet = {
+        template: `
+        <div>
+          <!-- Project Section -->
+          <section class="project">
+            <div class="container">
+              <h2 class="section-title">Vous avez une idée ? Discutons-en.</h2>
+              <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Nous aimons faire naître les idées, transformer les besoins en prototypes, puis en solutions concrètes. Dites-nous ce que vous cherchez, nous verrons comment vous aider.</p>
+              
+              <div class="project-container">
+                <div class="project-info">
+                  <div class="project-methods">
+                    <div class="project-item">
+                      <i class="fas fa-envelope project-icon"></i>
+                      <div>
+                        <h4>Email</h4>
+                        <p>hello@taktylabs.com</p>
+                      </div>
+                    </div>
+                    <div class="project-item">
+                      <i class="fas fa-phone project-icon"></i>
+                      <div>
+                        <h4>Téléphone</h4>
+                        <p>+221 XXX XXX XXX</p>
+                      </div>
+                    </div>
+                    <div class="project-item">
+                      <i class="fas fa-globe project-icon"></i>
+                      <div>
+                        <h4>Site web</h4>
+                        <p>www.taktylabs.com</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3>Vous êtes :</h3>
+                    <ul class="audience-list">
+                      <li>Un entrepreneur ? Une PME ?</li>
+                      <li>Une école ? Un centre de formation ?</li>
+                      <li>Une association ? Un partenaire potentiel ?</li>
+                    </ul>
+                    <p>Vous êtes au bon endroit. Remplissez le formulaire ou prenez rendez-vous avec nous.</p>
+                  </div>
+                  
+                  
+                </div>
+                <div class="project-visual">
+                  <div class="project-form">
+                    <h3>Envoyez-nous un message</h3>
+                    <form @submit.prevent="submitForm">
+                      <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="organization">Organisation</label>
+                        <input type="text" id="organization">
+                      </div>
+                      <div class="form-group">
+                        <label for="category">Vous êtes</label>
+                        <select id="category" required>
+                          <option value="">Sélectionnez une option</option>
+                          <option value="entreprise">Entreprise / PME</option>
+                          <option value="education">École / Centre de formation</option>
+                          <option value="association">Association</option>
+                          <option value="entrepreneur">Entrepreneur</option>
+                          <option value="autre">Autre</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" required></textarea>
+                      </div>
+                      <button type="submit" class="btn">Envoyer le message</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      `,
+        methods: {
+          submitForm() {
+            alert(
+              "Votre message a été envoyé ! Nous vous contacterons très rapidement."
+            );
+          },
+        },
+      };
+
+      // Composant pour la page Inspiration & Impact (Blog)
+      const Inspiration = {
+        template: `
+    <div>
+      <!-- Blog Section -->
+      <section class="blog">
+        <div class="container">
+          <h2 class="section-title">Inspiration & Impact</h2>
+          <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Bienvenue sur notre carnet d'idées. Ici, on partage plus que des articles :</p>
+          
+          <div class="blog-cards">
+            <router-link
+              v-for="article in articles"
+              :key="article.id"
+              class="blog-card"
+              :to="'/blog/' + article.slug"
+              style="text-decoration: none; color: inherit;"
+            >
+              <div class="blog-visual" :style="{ backgroundImage: 'url(' + article.image + ')' }"></div>
+              <div class="blog-content">
+                <span class="blog-tag">{{ article.category.name }}</span>
+                <h3>{{ article.title }}</h3>
+                <div v-html="truncate(article.content, 120)"></div>
+                <div class="blog-meta">
+                  <span><i class="far fa-calendar"></i> {{ article.published_date }}</span>
+                  <span><i class="far fa-user"></i> Taktyl Labs</span>
+                </div>
+              </div>
+            </router-link>
+          </div>
+          
+          <p style="text-align: center; margin-top: 3rem; font-style: italic;">"Parce que faire avancer les choses, c'est aussi transmettre ce qu'on apprend en chemin."</p>
+        </div>
+      </section>
+    </div>
+  `,
+        data() {
+          return {
+            articles: [],
+          };
+        },
+        created() {
+          this.loadArticles();
+        },
+        methods: {
+          loadArticles() {
+            fetch("http://localhost:8000/api/posts/")
+              .then((response) => response.json())
+              .then((data) => {
+                this.articles = data;
+              })
+              .catch((error) => {
+                console.error(
+                  "Erreur lors du chargement des articles :",
+                  error
+                );
+              });
+          },
+          truncate(text, length) {
+            if (!text) return "";
+            return text.length > length
+              ? text.substring(0, length) + "..."
+              : text;
+          },
+        },
+      };
+
+      const BlogDetail = {
+        template: `
+    <div>
+      <section class="article-details">
+        <div class="container" v-if="article">
+          <h2>{{ article.title }}</h2>
+          <div class="article-meta">
+            <span><i class="far fa-calendar"></i> {{ article.published_date }}</span>
+            <span><i class="far fa-user"></i> Taktyl Labs</span>
+          </div>
+          <div class="article-content">
+            <img :src="article.image" alt="Article Image" class="article-image" v-if="article.image">
+            <div v-html="article.content"></div> <!-- Affichage du contenu stylé -->
+          </div>
+        </div>
+        <div v-else class="loading">
+          Chargement de l'article...
+        </div>
+      </section>
+    </div>
+  `,
+        data() {
+          return {
+            article: null,
+          };
+        },
+        created() {
+          this.loadArticle();
+        },
+        methods: {
+          loadArticle() {
+            const slug = this.$route.params.slug;
+            fetch(`http://localhost:8000/api/posts/${slug}/`)
+              .then((response) => response.json())
+              .then((data) => {
+                this.article = data;
+              })
+              .catch((error) => {
+                console.error(
+                  "Erreur lors du chargement de l'article :",
+                  error
+                );
+              });
+          },
+        },
+      };
+
+      // Définition des routes
+      const routes = [
+        { path: "/", component: Accueil },
+        { path: "/solutions", component: Solutions },
+        { path: "/adn", component: ADN },
+        { path: "/projet", component: Projet },
+        { path: "/inspiration", component: Inspiration },
+        { path: "/blog/:slug", component: BlogDetail }, // <-- Ajout de la route détail
+      ];
+
+      // Création du routeur
+      const router = new VueRouter({
+        routes,
+      });
+
+      // Création de l'application Vue
+      new Vue({
+        el: "#app",
+        router,
+        data: {
+          menuOpen: false,
+        },
+        methods: {
+          toggleMenu() {
+            this.menuOpen = !this.menuOpen;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

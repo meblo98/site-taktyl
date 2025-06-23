@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>{% if form.instance.pk %}Modifier{% else %}Nouveau{% endif %} Post</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}  <!-- Ajoutez cette ligne pour charger les scripts CKEditor -->
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <a href="{% if form.instance.pk %}{% url 'post_detail' form.instance.slug %}{% else %}{% url 'post_list' %}{% endif %}" class="btn btn-secondary">Annuler</a>
+    </form>
+{% endblock %}
