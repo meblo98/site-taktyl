@@ -1,39 +1,20 @@
 # Core Django
-Django==4.2.7
-django-cors-headers==4.3.1
-
-# Database
-psycopg2-binary==2.9.9  # Pour PostgreSQL
-# ou utiliser mysqlclient si vous utilisez MySQL
+Django==5.2.3
+django-cors-headers==4.7.0
 
 # API REST
-djangorestframework==3.14.0
-drf-yasg==1.21.7  # Documentation API
-
-# Authentification
-djangorestframework-simplejwt==5.3.0  # Pour l'authentification JWT
+djangorestframework==3.16.0
 
 # Gestion des médias
-Pillow==10.1.0  # Pour le traitement des images
-python-magic==0.4.27  # Pour la validation des types de fichiers
+Pillow==11.2.1
+whitenoise
 
 # Éditeur de texte riche
-django-ckeditor==6.7.0
-django-ckeditor-uploader==1.2.2
-
-# Environnement et déploiement
-python-dotenv==1.0.0
-gunicorn==21.2.0  # Serveur WSGI pour production
-whitenoise==6.6.0  # Pour servir les fichiers statiques
-
-# Sécurité
-bcrypt==4.0.1  # Pour le hachage des mots de passe
-cryptography==41.0.7  # Pour le chiffrement
+django-ckeditor==6.7.3
+django-js-asset==3.1.2
 
 # Utilitaires
-python-dateutil==2.8.2
-requests==2.31.0
+sqlparse==0.5.3
 
-# Développement (à mettre dans une section séparée si vous utilisez requirements-dev.txt)
-ipdb==0.13.13
-django-debug-toolbar==4.2.0
+# Ajoute ici d'autres dépendances utiles à ton projet
+gunicorn

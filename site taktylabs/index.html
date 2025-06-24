@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Taktyl Labs - Solutions Digitales pour l'Afrique</title>
+    <link rel="icon" href="images/ChatGPT Image 24 juin 2025, 15_15_47.png" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -502,7 +503,7 @@
         },
         methods: {
           loadArticles() {
-            fetch("http://localhost:8000/api/posts/")
+            fetch("https://blogbackend-kjrt.onrender.com/api/posts/")
               .then((response) => response.json())
               .then((data) => {
                 this.articles = data;
@@ -555,7 +556,7 @@
         methods: {
           loadArticle() {
             const slug = this.$route.params.slug;
-            fetch(`http://localhost:8000/api/posts/${slug}/`)
+            fetch(`https://blogbackend-kjrt.onrender.com/api/posts/${slug}/`)
               .then((response) => response.json())
               .then((data) => {
                 this.article = data;
