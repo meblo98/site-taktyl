@@ -362,19 +362,21 @@ nav a.active::after {
 }
 
 .project-visual {
-  flex: 1;
-  height: 400px;
+  margin-bottom: 100px;
+  /* flex: 1; */
+  /* height: 400px; */
   /* background-color: var(--primary-color); */
-  border-radius: 8px;
+  /* border-radius: 8px; */
   /* background-image: url('images/Professionnels\ sénégalais\ et\ technologies\ numériques.png'); */
-  background-size: cover;
-  background-position: center;
+  /* background-size: cover;
+  background-position: center; */
 }
 
 .project-form form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem 2rem;
+  
 }
 
 .project-form h3 {
@@ -400,6 +402,7 @@ nav a.active::after {
   grid-column: 1 / -1;
   justify-self: end; /* optionnel, pour aligner le bouton à droite */
   margin-top: 1rem;
+  
 }
 .project-methods {
   margin: 2rem 0;
@@ -407,8 +410,13 @@ nav a.active::after {
 
 .project-item {
   display: flex;
+  
   align-items: center;
   margin-bottom: 1rem;
+}
+
+.tel{
+  margin-left: 2rem;
 }
 
 .project-icon {

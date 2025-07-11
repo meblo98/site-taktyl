@@ -9,6 +9,10 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # charge le fichier .env localement
 
 from pathlib import Path
 import os
@@ -67,6 +71,11 @@ CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:8080",  # Port par défaut de Vue dev server
 # ]
+
+STATICFILES_DIRS = [
+    BASE_DIR / "blogbackend/static",
+]
+
 
 ROOT_URLCONF = 'blogbackend.urls'
 MEDIA_URL = '/media/'

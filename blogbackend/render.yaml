@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: mon-backend-blog
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    startCommand: gunicorn blogbackend.wsgi
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        value: changeme-secret-key
+      - key: DJANGO_ENV
+        value: production
+      - key: DEBUG
+        value: False
